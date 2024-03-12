@@ -1,0 +1,22 @@
+{
+  "name": "kec-hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently --names server,client -c cyan,yellow \"cd server && pnpm start\" \"cd client && pnpm dev\"",
+    "dev:client": "cd client && pnpm dev",
+    "dev:server": "cd server && pnpm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "dependencies": {
+    "firebase": "^9.17.1",
+    "moment": "^2.29.4",
+    "nodemailer": "^6.9.1"
+  }
+}
