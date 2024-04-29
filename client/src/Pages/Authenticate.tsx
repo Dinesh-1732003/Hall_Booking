@@ -204,6 +204,7 @@ const SignUp = ({ setIsLogin }: SignUpProps) => {
                     <HStack spacing='24px'>
                         <Radio value='Student'>Student</Radio>
                         <Radio value='Faculty'>Faculty</Radio>
+                        <Radio value='Non-Teaching Faculty'>Non-Teaching Faculty</Radio>
                     </HStack>
                 </RadioGroup>
             </FormControl>

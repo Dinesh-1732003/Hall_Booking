@@ -21,7 +21,7 @@ const Component = ({ item }: { item: any }) => {
             <Flex alignItems="baseline" gap="2">
                 <Heading fontSize="2xl">{item.requested_hall.name}</Heading>
                 <Badge colorScheme="orange">{item.requested_by.status}</Badge>
-            </Flex>
+            </Flex> 
             <Text><b>Incharge: </b>{item.requested_hall.incharge.name} ({item.requested_hall.incharge.contact})</Text>
             <Divider my="2" />
             <Text><b>Club:</b> {item.event.club.name} - <b>Staff:</b> {item.event.staff_incharge.name}</Text>
@@ -31,6 +31,11 @@ const Component = ({ item }: { item: any }) => {
             {
                 item.requested_by.status === 'pending' ? <Button onClick={() => navigate('/track', { state: { _id: item._id } })} width="full" colorScheme="blue">Track Status</Button>
                     : ''}
+            <Divider my="2" />
+            {
+                item.requested_by.status === 'pending' ? <Button onClick={() => navigate('/bookings', { state: { _id: item._id } })} width="full" colorScheme="blue">Cancel Booking</Button>
+                : ''
+            }
         </VStack >
     )
 }

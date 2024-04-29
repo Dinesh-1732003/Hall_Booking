@@ -113,6 +113,7 @@ const Bookings = () => {
         }
         if (isSingleDayEvent === '1') {
             console.log(capacity, hall)
+            console.log(singleFilter,"baseurl");
             const response = await axios.get(baseURL + singleFilter, {
                 params: {
                     capacity: capacity,
@@ -120,7 +121,9 @@ const Bookings = () => {
                     date: moment(selectedDate).format('YYYY-MM-DD')
                 }
             })
+            // console.log(response.data)
             setResults(response.data.data)
+            // console.log(response.data.data);
         }
     }
 

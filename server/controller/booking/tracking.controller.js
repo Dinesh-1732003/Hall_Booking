@@ -21,7 +21,7 @@ export const getTrackingId = async (id, type, requested_hall) => {
 
     const tracking = await trackingSchema(newTracking);
     const data = await tracking.save();
-    const isMailSent = await sendMail("Rahul",type)
+    const isMailSent = await sendMail("Kavin",type)
     console.log(isMailSent)
     return data;
 }

@@ -116,7 +116,7 @@ const HallCard = ({ isSingleDayEvent, water, mic, projector, speaker, ac, genera
                                 {!isFullDay ? <>
                                     <Text fontWeight="600">Periods:</Text>
                                     <Flex flexWrap="wrap" alignItems="center" gap="2">
-                                        {Array.from(Array(7).keys()).map((req, index) => <Flex border="1px" borderColor="blackAlpha.300" rounded="md" alignItems="center" justifyContent="center" key={index} px="3.5" py="2" cursor="pointer"
+                                        {Array.from(Array(8).keys()).map((req, index) => <Flex border="1px" borderColor="blackAlpha.300" rounded="md" alignItems="center" justifyContent="center" key={index} px="3.5" py="2" cursor="pointer"
                                             color={selectedPeriods.includes(req + 1) ? 'white' : ""}
                                             bgColor={selectedPeriods.includes(req + 1) ? 'green.400' : ""} _hover={{ bgColor: selectedPeriods.includes(req + 1) ? '' : "gray.50" }}
                                             onClick={() => {

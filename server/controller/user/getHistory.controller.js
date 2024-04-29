@@ -3,8 +3,10 @@ import trackingSchema from "../../models/tracking.schema.js";
 
 export const getHistory = async (req, res) => {
     const { userId } = req.query;
+    console.log(userId,"hai");
     const tracking = await trackingSchema.find({ requested_by: userId }).populate("requested_hall");
     const historyData = [];
+    console.log(tracking);
     for (let i = 0; i < tracking.length; i++) {
         historyData.push(tracking[i]._id);
     }

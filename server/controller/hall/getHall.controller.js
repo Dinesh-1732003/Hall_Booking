@@ -6,13 +6,16 @@ import mongoose from "mongoose";
 export const getHallBySingle = async (req, res) => {
 
   const { capacity, date, type } = req.query;
+  console.log(capacity, date, type,"from backend");
   const existingBooking = await bookingSchema.find({
     "schedule.date": new Date(date),
   });
+  console.log(existingBooking,)
   const listOfHalls = await hallSchema.find({
     capacity: { $gte: capacity },
     type,
   })
+  console.log(listOfHalls,"list");
   let arr = [];
   const list = listOfHalls.map((e) => e._id.toString())
   const pr = []
@@ -27,19 +30,22 @@ export const getHallBySingle = async (req, res) => {
       }
     }
   });
+  console.log(pr)
   for (let i = 0; i < list.length; i++) {
     const id = mongoose.Types.ObjectId(list[i]);
     const temp = await hallSchema.findById(id).populate("incharge")
     arr.push({ ...temp, period: pr[i] })
   }
+  console.log(arr)
   const data = arr.map((item) => ({ ...item._doc, period: item.period }));
   console.log(data)
 
   res.send({ status: true, data });
-  // res.send("halls")
+  //res.send("halls")
 };
 
 export const getEventByMultiple = async (req, res) => {
+
   const { capacity, range, type } = req.body;
   let halls;
   const date = range.map((e) => new Date(e))
@@ -58,6 +64,8 @@ export const getEventByMultiple = async (req, res) => {
   matchedSingleDate.map((e) => data.push(e))
   const existingEvent = data.map((item) => item.requested_hall);
   console.log(existingEvent)
+
+
   if (existingEvent.length < 1) {
     halls = await hallSchema.find({
       _id: {
@@ -67,8 +75,8 @@ export const getEventByMultiple = async (req, res) => {
       type
     });
   }
+  
   else {
-
     halls = await hallSchema.find({
       capacity: { $gte: capacity },
       type
